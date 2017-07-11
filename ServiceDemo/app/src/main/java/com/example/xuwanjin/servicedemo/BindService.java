@@ -53,6 +53,7 @@ public class BindService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
+        Toast.makeText(getApplicationContext(), "Unbind Service", Toast.LENGTH_SHORT).show();
         return super.onUnbind(intent);
     }
 

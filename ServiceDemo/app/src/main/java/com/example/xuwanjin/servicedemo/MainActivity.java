@@ -14,6 +14,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     Button startServiceBtn;
     Button bindServiceBtn;
+    Button unbindServiceBtn;
+    ServiceConnection mServiceConnection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +46,27 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onServiceDisconnected(ComponentName componentName) {
-                        
 
                     }
                 };
+                mServiceConnection = serviceConnection;
 
                 Intent bindServiceIntent = new Intent();
                 bindServiceIntent.setClass(getApplicationContext(), BindService.class);
                 bindService(bindServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
             }
 
+        });
+
+
+        unbindServiceBtn = findViewById(R.id.unbind_service);
+        unbindServiceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mServiceConnection != null) {
+                    unbindService(mServiceConnection);
+                }
+            }
         });
     }
 }

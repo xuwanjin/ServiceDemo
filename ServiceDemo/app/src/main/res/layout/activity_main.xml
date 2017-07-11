@@ -23,6 +23,13 @@
             android:text="@string/bind_service"
             />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/unbind_service"
+            android:text="@string/unbind_service"
+            />
+
 
     </LinearLayout>
 
