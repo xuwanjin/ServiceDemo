@@ -2,18 +2,28 @@ package com.example.xuwanjin.servicedemo;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 /**
  * Created by xuwanjin on 7/11/17.
  */
 
 public class BindService extends Service {
+
+    public MyBinder myBinder = new MyBinder();
+
+    public void getMethod(){
+
+        Toast.makeText(getApplicationContext(), "Bind Service", Toast.LENGTH_SHORT).show();
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return myBinder;
     }
 
     @Override
@@ -39,5 +49,17 @@ public class BindService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        return super.onUnbind(intent);
+    }
+
+    class MyBinder extends Binder{
+        public BindService getService(){
+
+            return BindService.this;
+        }
     }
 }

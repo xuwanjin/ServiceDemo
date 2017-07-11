@@ -37,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
 
+                        BindService.MyBinder myBinder = (BindService.MyBinder) iBinder;
+                        BindService bindService = myBinder.getService();
+                        bindService.getMethod();
                     }
 
                     @Override
                     public void onServiceDisconnected(ComponentName componentName) {
+                        
 
                     }
                 };

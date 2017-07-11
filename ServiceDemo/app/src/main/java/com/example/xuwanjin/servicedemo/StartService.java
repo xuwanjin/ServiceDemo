@@ -10,7 +10,7 @@ import android.widget.Toast;
  * Created by xuwanjin on 7/11/17.
  */
 
-public class StartService  extends Service{
+public class StartService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
